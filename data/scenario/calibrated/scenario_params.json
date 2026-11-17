@@ -1,0 +1,215 @@
+{
+  "scenario": "calibrated",
+  "settings": {
+    "seed": 2026,
+    "n_patients": 5000,
+    "window_start": "2021-10-01",
+    "window_end": "2026-09-30",
+    "output_root": "data/scenario"
+  },
+  "params": {
+    "patients": {
+      "sex_probs": {
+        "Female": 0.92,
+        "Male": 0.07,
+        "Other": 0.01
+      },
+      "race_probs": {
+        "White": 0.45,
+        "Black": 0.2,
+        "Asian": 0.15,
+        "Other": 0.12,
+        "Unknown": 0.08
+      },
+      "hispanic_share": 0.2,
+      "language_probs": {
+        "English": 0.8,
+        "Spanish": 0.12,
+        "Chinese": 0.05,
+        "Other": 0.03
+      },
+      "interpreter_share_non_english": 0.6,
+      "pcp_probs": {
+        "PCP_A": 0.28,
+        "PCP_B": 0.26,
+        "PCP_C": 0.18,
+        "PCP_D": 0.15,
+        "PCP_E": 0.13
+      },
+      "large_panels": [
+        "PCP_A",
+        "PCP_B"
+      ],
+      "insurance_probs_under65": {
+        "Commercial": 0.6,
+        "Medicaid": 0.25,
+        "Medicare": 0.05,
+        "Other": 0.1
+      },
+      "insurance_probs_65plus": {
+        "Commercial": 0.15,
+        "Medicaid": 0.05,
+        "Medicare": 0.75,
+        "Other": 0.05
+      },
+      "mychart_rate_under65": 0.82,
+      "mychart_rate_65plus": 0.62,
+      "mychart_interpreter_mult": 0.75,
+      "sdoh_screening_rate": 0.65,
+      "sdoh": {
+        "transportation": 0.12,
+        "transportation_medicaid": 0.3,
+        "financial_strain": 0.18,
+        "financial_strain_medicaid": 0.4,
+        "housing_instability": 0.06,
+        "social_isolation": 0.12,
+        "social_isolation_65plus": 0.25,
+        "low_health_literacy": 0.1,
+        "low_health_literacy_interpreter": 0.35
+      },
+      "comorbidity_base": 0.3,
+      "comorbidity_per_year": 0.025,
+      "asymptomatic_share": 0.5,
+      "new_patient_share": 0.25
+    },
+    "q1_attendance": {
+      "target_no_show_rate": 0.07,
+      "target_patient_cancel_rate": 0.08,
+      "target_late_cancel_rate": 0.03,
+      "lead_time_cap_days": 180,
+      "or_lead_time_per_30d": 1.2,
+      "or_no_mychart": 1.3,
+      "or_age65_x_no_mychart": 1.5,
+      "or_prior_no_show": 2.0,
+      "or_medicaid": 1.3,
+      "or_transportation": 1.5,
+      "or_comorbidity_per_condition": 1.25,
+      "or_female": 1.0,
+      "or_video": 1.0,
+      "or_phone": 1.0,
+      "or_patient_cancel_lead_per_30d": 1.15,
+      "or_late_cancel_transportation": 1.3,
+      "clinic_cancel_rate": 0.04,
+      "visit_mode_probs": {
+        "Office": 0.8,
+        "Video": 0.15,
+        "Phone": 0.05
+      }
+    },
+    "q2_followup": {
+      "p_documented": 0.45,
+      "p_same_day_if_documented": 0.5,
+      "p_same_day_if_undocumented": 0.1,
+      "target_on_time_return": 0.5,
+      "grace_days": 30,
+      "or_asymptomatic_chronic": 0.7,
+      "or_social_isolation": 0.7,
+      "or_low_health_literacy": 0.75,
+      "or_medicaid": 1.0,
+      "target_preventive_on_time": 0.6,
+      "or_preventive_social_isolation": 0.7,
+      "or_preventive_low_health_literacy": 0.75,
+      "or_preventive_no_mychart": 1.0,
+      "order_rate_per_visit": 0.2,
+      "target_order_completion": 0.7,
+      "or_order_prior_auth": 0.6,
+      "or_order_low_health_literacy": 0.8
+    },
+    "q3_access": {
+      "gamma_shape": 1.2,
+      "base_mean_lead_days_new": 17,
+      "mult_follow_up": 1.3,
+      "mult_annual_physical": 1.5,
+      "mult_large_panel": 1.2,
+      "mult_mychart_booking": 0.85,
+      "mult_age65": 1.0,
+      "mychart_booking_share_if_active": 0.45,
+      "front_desk_share": 0.15
+    },
+    "q4_referrals": {
+      "base_referral_rate": 0.12,
+      "or_referral_per_condition": 1.2,
+      "specialty_probs": {
+        "Cardiology": 0.18,
+        "Dermatology": 0.18,
+        "Endocrinology": 0.14,
+        "Gastroenterology": 0.16,
+        "Imaging": 0.2,
+        "Orthopedics": 0.14
+      },
+      "prior_auth_share": {
+        "Cardiology": 0.35,
+        "Dermatology": 0.1,
+        "Endocrinology": 0.15,
+        "Gastroenterology": 0.2,
+        "Imaging": 0.6,
+        "Orthopedics": 0.25
+      },
+      "urgent_share": 0.2,
+      "leaves_nyu_share": 0.08,
+      "base_median_days_to_completion": 25,
+      "median_days_to_closure": 60,
+      "hr_prior_auth": 0.5,
+      "hr_urgent": 1.5,
+      "hr_specialty": {
+        "Cardiology": 1.0,
+        "Dermatology": 0.7,
+        "Endocrinology": 0.8,
+        "Gastroenterology": 0.9,
+        "Imaging": 1.3,
+        "Orthopedics": 1.0
+      },
+      "hr_medicaid": 1.0,
+      "close_reason_probs": {
+        "No longer needed": 0.3,
+        "Care elsewhere": 0.25,
+        "Insurance": 0.15,
+        "Issue resolved": 0.15,
+        "No appointment available": 0.15
+      }
+    },
+    "q5_messages": {
+      "mean_messages_per_patient": 6,
+      "gamma_shape_patient_volume": 0.5,
+      "high_priority_share": 0.15,
+      "pac_route_share": 0.3,
+      "median_response_hours": 20,
+      "response_sigma": 0.8,
+      "weekend_delay_hours": 48,
+      "pac_delay_hours": 72,
+      "high_priority_mult": 0.3
+    },
+    "q7_utilization": {
+      "background_ed_rate_per_year": 0.12,
+      "or_missed_visit": 1.5,
+      "or_comorbidity_per_condition": 1.4,
+      "or_no_mychart": 1.0,
+      "or_incomplete_referral": 1.3,
+      "category_probs": {
+        "ED": 0.45,
+        "Urgent Care": 0.45,
+        "Inpatient": 0.1
+      }
+    },
+    "q9_care_gaps": {
+      "rebook_after_missed": 0.7,
+      "rebook_delay_mean_days": 30,
+      "no_rebook_delay_min_days": 120,
+      "no_rebook_delay_mean_days": 200,
+      "rebook_after_cancel": 0.85,
+      "rebook_after_cancel_delay_mean_days": 10,
+      "late_return_mean_days": 120,
+      "dropout_prob": 0.06,
+      "dropout_gap_min_days": 365,
+      "dropout_gap_max_days": 900,
+      "mult_ed_in_gap": 3.0,
+      "ed_gap_threshold_days": 548
+    }
+  },
+  "calibrated_intercepts": {
+    "ns": -3.6901203999105703,
+    "pc": -2.585288053902206,
+    "lc": -3.2811185834931003,
+    "q2": 0.2198463836023999
+  }
+}

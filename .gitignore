@@ -218,3 +218,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# macOS
+.DS_Store
+
+# Scenario data: only "calibrated" is kept in GitHub.
+# The others can be rebuilt any time: python src/generate_scenario_data.py
+data/scenario/no_effect/
+data/scenario/patient_driven/
+data/scenario/system_driven/
+
+# Test output from no_show_regression.py --output-dir
+results/scenario_calibrated/
+results/scenario_validation/no_effect_recovery.png
+results/scenario_validation/patient_driven_recovery.png
+results/scenario_validation/system_driven_recovery.png

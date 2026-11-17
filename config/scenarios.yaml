@@ -1,0 +1,190 @@
+# ============================================================
+# NYU Langone Capstone - Synthetic scenario parameters
+#
+# Every number here is an ASSUMPTION we chose to test the
+# analysis pipeline. They are calibrated to interviews and
+# published benchmarks, but they are NOT findings about
+# NYU Langone patients.
+#
+# Conventions
+#   or_*   odds ratio      (1.0 = no effect)
+#   hr_*   hazard ratio    (1.0 = no effect)
+#   mult_* multiplier on a mean (1.0 = no effect)
+#
+# "base" holds the evidence-calibrated values. Each scenario
+# below only lists what it changes from "base".
+# ============================================================
+
+settings:
+  seed: 2026
+  n_patients: 5000
+  window_start: "2021-10-01"
+  window_end: "2026-09-30"
+  output_root: data/scenario
+
+base:
+  patients:
+    sex_probs: {Female: 0.92, Male: 0.07, Other: 0.01}   # Center for Women's Health
+    race_probs: {White: 0.45, Black: 0.20, Asian: 0.15, Other: 0.12, Unknown: 0.08}
+    hispanic_share: 0.20
+    language_probs: {English: 0.80, Spanish: 0.12, Chinese: 0.05, Other: 0.03}
+    interpreter_share_non_english: 0.60
+    pcp_probs: {PCP_A: 0.28, PCP_B: 0.26, PCP_C: 0.18, PCP_D: 0.15, PCP_E: 0.13}
+    large_panels: [PCP_A, PCP_B]
+    insurance_probs_under65: {Commercial: 0.60, Medicaid: 0.25, Medicare: 0.05, Other: 0.10}
+    insurance_probs_65plus: {Commercial: 0.15, Medicaid: 0.05, Medicare: 0.75, Other: 0.05}
+    mychart_rate_under65: 0.82
+    mychart_rate_65plus: 0.62
+    mychart_interpreter_mult: 0.75
+    sdoh_screening_rate: 0.65            # Dr. Rein: screening not filled for every patient
+    sdoh:
+      transportation: 0.12
+      transportation_medicaid: 0.30
+      financial_strain: 0.18
+      financial_strain_medicaid: 0.40
+      housing_instability: 0.06
+      social_isolation: 0.12
+      social_isolation_65plus: 0.25
+      low_health_literacy: 0.10
+      low_health_literacy_interpreter: 0.35
+    comorbidity_base: 0.3                # Poisson mean at age 18
+    comorbidity_per_year: 0.025          # added per year of age
+    asymptomatic_share: 0.50             # share of chronic patients with a silent condition
+    new_patient_share: 0.25
+
+  # ---------------- Q1: missed and canceled appointments ----------------
+  q1_attendance:
+    target_no_show_rate: 0.07            # among Completed + No-show
+    target_patient_cancel_rate: 0.08
+    target_late_cancel_rate: 0.03
+    lead_time_cap_days: 180              # lead-time effect stops growing after 6 months
+    or_lead_time_per_30d: 1.20           # Dantas 2018, Tuan 2025
+    or_no_mychart: 1.30                  # Epic Research 2025: 7.9% vs 6.2%
+    or_age65_x_no_mychart: 1.50          # Lisa: adults 65+ struggle with MyChart
+    or_prior_no_show: 2.00
+    or_medicaid: 1.30
+    or_transportation: 1.50              # Dr. Tepper, Lisa
+    or_comorbidity_per_condition: 1.25   # confounder shared with Q7
+    or_female: 1.00                      # null control
+    or_video: 1.00                       # null control
+    or_phone: 1.00                       # null control
+    or_patient_cancel_lead_per_30d: 1.15
+    or_late_cancel_transportation: 1.30
+    clinic_cancel_rate: 0.04             # system-driven
+    visit_mode_probs: {Office: 0.80, Video: 0.15, Phone: 0.05}
+
+  # ---------------- Q2: follow-through on recommended care ----------------
+  q2_followup:
+    p_documented: 0.45                   # Dr. Rein: return interval filled in under half the time
+    p_same_day_if_documented: 0.50       # "book on your way out"
+    p_same_day_if_undocumented: 0.10
+    target_on_time_return: 0.50          # among visits NOT booked at checkout
+    grace_days: 30                       # window = recommended interval + grace
+    or_asymptomatic_chronic: 0.70        # Dr. Rein: silent disease
+    or_social_isolation: 0.70
+    or_low_health_literacy: 0.75
+    or_medicaid: 1.00                    # null control
+    # Q2.2 preventive care completed within 90 days of due date
+    target_preventive_on_time: 0.60
+    or_preventive_social_isolation: 0.70
+    or_preventive_low_health_literacy: 0.75
+    or_preventive_no_mychart: 1.00       # null control
+    # Q2.3 tests and imaging completed within 60 days
+    order_rate_per_visit: 0.20
+    target_order_completion: 0.70
+    or_order_prior_auth: 0.60            # Heather Lam: prior auth delays diagnostic tests
+    or_order_low_health_literacy: 0.80
+
+  # ---------------- Q3: appointment access ----------------
+  q3_access:
+    gamma_shape: 1.2
+    base_mean_lead_days_new: 17          # tuned so ~43% of new patients are seen within 10 days (Lisa)
+    mult_follow_up: 1.30
+    mult_annual_physical: 1.50
+    mult_large_panel: 1.20               # Dr. Tepper: panel size
+    mult_mychart_booking: 0.85
+    mult_age65: 1.00                     # null control
+    mychart_booking_share_if_active: 0.45
+    front_desk_share: 0.15
+
+  # ---------------- Q4: referrals ----------------
+  q4_referrals:
+    base_referral_rate: 0.12             # per completed visit
+    or_referral_per_condition: 1.20
+    specialty_probs: {Cardiology: 0.18, Dermatology: 0.18, Endocrinology: 0.14, Gastroenterology: 0.16, Imaging: 0.20, Orthopedics: 0.14}
+    prior_auth_share: {Cardiology: 0.35, Dermatology: 0.10, Endocrinology: 0.15, Gastroenterology: 0.20, Imaging: 0.60, Orthopedics: 0.25}
+    urgent_share: 0.20
+    leaves_nyu_share: 0.08
+    base_median_days_to_completion: 25
+    median_days_to_closure: 60           # competing event: referral closed without a visit
+    hr_prior_auth: 0.50                  # Heather Lam
+    hr_urgent: 1.50
+    hr_specialty: {Cardiology: 1.0, Dermatology: 0.7, Endocrinology: 0.8, Gastroenterology: 0.9, Imaging: 1.3, Orthopedics: 1.0}
+    hr_medicaid: 1.00                    # null control
+    close_reason_probs: {No longer needed: 0.30, Care elsewhere: 0.25, Insurance: 0.15, Issue resolved: 0.15, No appointment available: 0.15}
+
+  # ---------------- Q5: messages ----------------
+  q5_messages:
+    mean_messages_per_patient: 6
+    gamma_shape_patient_volume: 0.5      # skewed: ~20% of patients send most messages (Dr. Rein)
+    high_priority_share: 0.15
+    pac_route_share: 0.30
+    median_response_hours: 20
+    response_sigma: 0.8
+    weekend_delay_hours: 48              # Dr. Rein: message held over a weekend
+    pac_delay_hours: 72                  # Lisa: patient -> PAC -> practice chain
+    high_priority_mult: 0.30
+
+  # ---------------- Q7: downstream utilization ----------------
+  q7_utilization:
+    background_ed_rate_per_year: 0.12    # ED/UC/inpatient visits per patient-year, no comorbidity
+    or_missed_visit: 1.50                # rate ratio for the 90 days after a no-show or late cancel
+    or_comorbidity_per_condition: 1.40   # confounder: sicker patients both miss visits and use the ED
+    or_no_mychart: 1.00                  # null control
+    or_incomplete_referral: 1.30         # rate ratio for days 60-150 after a referral not completed by day 60
+    category_probs: {ED: 0.45, Urgent Care: 0.45, Inpatient: 0.10}
+
+  # ---------------- Q6 / Q9: pathway and care gaps ----------------
+  q9_care_gaps:
+    rebook_after_missed: 0.70
+    rebook_delay_mean_days: 30
+    no_rebook_delay_min_days: 120
+    no_rebook_delay_mean_days: 200
+    rebook_after_cancel: 0.85
+    rebook_after_cancel_delay_mean_days: 10
+    late_return_mean_days: 120
+    dropout_prob: 0.06                   # leaves PCP care for a long gap after a visit
+    dropout_gap_min_days: 365
+    dropout_gap_max_days: 900
+    mult_ed_in_gap: 3.0                  # Q9: ED/UC rate during a long gap in PCP care
+    ed_gap_threshold_days: 548           # gaps over 18 months (annual visits sit right at 12 months)
+
+scenarios:
+  # 1. Every planted effect switched off. Models should find nothing.
+  no_effect:
+    q1_attendance: {or_lead_time_per_30d: 1.0, or_no_mychart: 1.0, or_age65_x_no_mychart: 1.0, or_prior_no_show: 1.0, or_medicaid: 1.0, or_transportation: 1.0, or_comorbidity_per_condition: 1.0, or_patient_cancel_lead_per_30d: 1.0, or_late_cancel_transportation: 1.0}
+    q2_followup: {or_asymptomatic_chronic: 1.0, or_social_isolation: 1.0, or_low_health_literacy: 1.0, or_preventive_social_isolation: 1.0, or_preventive_low_health_literacy: 1.0, or_order_prior_auth: 1.0, or_order_low_health_literacy: 1.0}
+    q3_access: {mult_follow_up: 1.0, mult_annual_physical: 1.0, mult_large_panel: 1.0, mult_mychart_booking: 1.0}
+    q4_referrals: {hr_prior_auth: 1.0, hr_urgent: 1.0, hr_specialty: {Cardiology: 1.0, Dermatology: 1.0, Endocrinology: 1.0, Gastroenterology: 1.0, Imaging: 1.0, Orthopedics: 1.0}}
+    q5_messages: {weekend_delay_hours: 0, pac_delay_hours: 0}
+    q7_utilization: {or_missed_visit: 1.0, or_comorbidity_per_condition: 1.0, or_incomplete_referral: 1.0}
+    q9_care_gaps: {mult_ed_in_gap: 1.0}
+
+  # 2. Evidence-calibrated: the values in "base".
+  calibrated: {}
+
+  # 3. Barriers sit mostly on the patient side.
+  patient_driven:
+    q1_attendance: {or_lead_time_per_30d: 1.0, or_no_mychart: 1.6, or_age65_x_no_mychart: 1.8, or_prior_no_show: 2.5, or_medicaid: 1.5, or_transportation: 2.0, clinic_cancel_rate: 0.02}
+    q2_followup: {p_documented: 0.80, p_same_day_if_documented: 0.60, or_asymptomatic_chronic: 0.6, or_social_isolation: 0.5, or_low_health_literacy: 0.6, or_order_prior_auth: 1.0, or_order_low_health_literacy: 0.6}
+    q3_access: {base_mean_lead_days_new: 10, mult_follow_up: 1.0, mult_annual_physical: 1.0, mult_large_panel: 1.0, mult_mychart_booking: 1.0}
+    q4_referrals: {hr_prior_auth: 1.0, leaves_nyu_share: 0.15}
+    q5_messages: {weekend_delay_hours: 6, pac_delay_hours: 6}
+
+  # 4. Barriers sit mostly on the system side.
+  system_driven:
+    q1_attendance: {or_lead_time_per_30d: 1.35, or_no_mychart: 1.0, or_age65_x_no_mychart: 1.0, or_prior_no_show: 1.0, or_medicaid: 1.0, or_transportation: 1.0, clinic_cancel_rate: 0.10}
+    q2_followup: {p_documented: 0.30, p_same_day_if_documented: 0.20, or_asymptomatic_chronic: 1.0, or_social_isolation: 1.0, or_low_health_literacy: 1.0, or_order_prior_auth: 0.4, or_order_low_health_literacy: 1.0}
+    q3_access: {base_mean_lead_days_new: 28, mult_follow_up: 1.5, mult_annual_physical: 1.8, mult_large_panel: 1.4, mult_mychart_booking: 0.75}
+    q4_referrals: {hr_prior_auth: 0.35, hr_urgent: 1.0}
+    q5_messages: {weekend_delay_hours: 72, pac_delay_hours: 120}

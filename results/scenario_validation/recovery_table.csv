@@ -1,0 +1,64 @@
+scenario,question,model,term,kind,estimate,ci_low,ci_high,p_value,n_obs,planted,covered,note
+calibrated,Q1,No-show logistic,"C(insurance_type, Treatment('Commercial'))[T.Medicaid]",OR,1.4089061352278363,1.1874218515952513,1.6717028537211536,8.544774373937657e-05,16443.0,1.3,1.0,
+calibrated,Q1,No-show logistic,"C(insurance_type, Treatment('Commercial'))[T.Medicare]",OR,1.1174422664133892,0.9057475140388156,1.3786151211159492,0.3001118393973804,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,"C(insurance_type, Treatment('Commercial'))[T.Other]",OR,0.7961527863905121,0.5594106210125322,1.1330840628840622,0.205491916489135,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,"C(visit_mode, Treatment('Office'))[T.Phone]",OR,0.8458510038720727,0.6234829827369504,1.1475275838494696,0.2820472294549913,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,"C(visit_mode, Treatment('Office'))[T.Video]",OR,0.90692019993413,0.7589286954186859,1.083770127567522,0.28241884931084293,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,"C(visit_type, Treatment('Annual Physical'))[T.Follow-up]",OR,1.0667142630118251,0.9296239058948994,1.22402114629086,0.3574702788182038,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,"C(visit_type, Treatment('Annual Physical'))[T.New Patient]",OR,1.0288840856496657,0.7395297457939576,1.4314535253299854,0.8657891242786646,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,lead_time_30,OR,1.228422649589253,1.1940153917452296,1.2638214016807792,1.0043794228727978e-45,16443.0,1.2,1.0,
+calibrated,Q1,No-show logistic,no_mychart,OR,1.330420314727054,1.102704003864568,1.6051616822240393,0.0028761924144004728,16443.0,1.3,1.0,
+calibrated,Q1,No-show logistic,age65,OR,1.0789042639574975,0.857043465000844,1.3581976391180148,0.5179024692060843,16443.0,1.0,1.0,
+calibrated,Q1,No-show logistic,no_mychart:age65,OR,1.395317752429302,1.0732374095257295,1.8140549453123433,0.012853176453151156,16443.0,1.5,1.0,
+calibrated,Q1,No-show logistic,prior_no_show,OR,1.9823535411884077,1.7081976434142085,2.3005098838608626,2.0515995634666884e-19,16443.0,2.0,1.0,
+calibrated,Q1,No-show logistic,sdoh_transportation,OR,1.5272870272028987,1.295497695785838,1.8005479060673502,4.58826762215762e-07,16443.0,1.5,1.0,
+calibrated,Q1,No-show logistic,comorbidity_count,OR,1.214036181384127,1.1518920087170148,1.2795330105218583,4.671492466459848e-13,16443.0,1.25,1.0,
+calibrated,Q1,No-show logistic,female,OR,1.0955553424139068,0.879490722750888,1.3647005900613867,0.4155023384021872,16443.0,1.0,1.0,
+calibrated,Q2,Follow-up on time: same-day booking,followup_booked_same_day,OR,6.233294550312091,5.633280725613047,6.8972172422176055,4.827680500078356e-275,8959.0,,,
+calibrated,Q2,Follow-up on time: same-day booking,comorbidity_count,OR,0.9067686822764529,0.8718584199812556,0.9430767935636295,1.0301747073560939e-06,8959.0,,,
+calibrated,Q2,Follow-up on time: patient factors,asymptomatic_chronic,OR,0.6175829290260282,0.521709123610074,0.731075338658316,2.1544576304611513e-08,2861.0,0.7,1.0,"approximate: planted on the return step, outcome also needs attendance"
+calibrated,Q2,Follow-up on time: patient factors,sdoh_social_isolation,OR,0.8295813471257981,0.6706416167692368,1.0261892407071729,0.08511863738141152,2861.0,0.7,1.0,"approximate: planted on the return step, outcome also needs attendance"
+calibrated,Q2,Follow-up on time: patient factors,sdoh_low_health_literacy,OR,0.6941055967018807,0.5510106430019528,0.874361657967406,0.0019367066082229608,2861.0,0.75,1.0,"approximate: planted on the return step, outcome also needs attendance"
+calibrated,Q2,Follow-up on time: patient factors,medicaid,OR,0.7982136761356555,0.650104150360935,0.9800661515793384,0.03137813722112972,2861.0,1.0,0.0,"approximate: planted on the return step, outcome also needs attendance"
+calibrated,Q2,Follow-up on time: patient factors,comorbidity_count,OR,1.0188971724499765,0.9492537093291815,1.0936501357052348,0.6042832205854034,2861.0,,,"approximate: planted on the return step, outcome also needs attendance"
+calibrated,Q2,Preventive care on time,sdoh_social_isolation,OR,0.6647130597460028,0.6207460703208685,0.7117941988235233,1.324064169194178e-31,23718.0,0.7,1.0,
+calibrated,Q2,Preventive care on time,sdoh_low_health_literacy,OR,0.7219467560469159,0.6705838322152402,0.7772437889605592,5.046532877448889e-18,23718.0,0.75,1.0,
+calibrated,Q2,Preventive care on time,no_mychart,OR,0.9871665612985883,0.9315059384737484,1.0461530941421289,0.6626856881555669,23718.0,1.0,1.0,
+calibrated,Q2,Tests completed in 60 days,prior_auth_required,OR,0.6560943338732252,0.5389735884412342,0.7986658051009219,2.660258686823315e-05,2967.0,0.6,1.0,
+calibrated,Q2,Tests completed in 60 days,sdoh_low_health_literacy,OR,0.8734865151002008,0.701372402393867,1.087836774668859,0.2270302110562914,2967.0,0.8,1.0,
+calibrated,Q3,Wait time Gamma GLM,"C(visit_type, Treatment('New Patient'))[T.Annual Physical]",ratio of means,1.5156579520045348,1.439705925964735,1.5956168451103885,1.3256182920470046e-56,22350.0,1.5,1.0,
+calibrated,Q3,Wait time Gamma GLM,"C(visit_type, Treatment('New Patient'))[T.Follow-up]",ratio of means,1.330546222442377,1.2633257241117417,1.4013434669039406,3.549740381620525e-27,22350.0,1.3,1.0,
+calibrated,Q3,Wait time Gamma GLM,large_panel,ratio of means,1.1877744080283763,1.1596385296312344,1.2165929367798753,5.89830440596081e-45,22350.0,1.2,1.0,
+calibrated,Q3,Wait time Gamma GLM,mychart_booking,ratio of means,0.8360592875505052,0.8151734618995528,0.8574802357655624,9.359708624086516e-44,22350.0,0.85,1.0,
+calibrated,Q3,Wait time Gamma GLM,age65,ratio of means,1.0090583738830445,0.9846936006010208,1.0340260171103204,0.4696210124332654,22350.0,1.0,1.0,
+calibrated,Q4,Referral completion Cox PH,"C(specialty, Treatment('Cardiology'))[T.Dermatology]",HR,0.649914677020541,0.5611142719081936,0.7527683905994518,8.994180651004619e-09,3587.0,0.7,1.0,
+calibrated,Q4,Referral completion Cox PH,"C(specialty, Treatment('Cardiology'))[T.Endocrinology]",HR,0.6930342561796063,0.5930289566183218,0.809903926070077,3.993687825417379e-06,3587.0,0.8,1.0,
+calibrated,Q4,Referral completion Cox PH,"C(specialty, Treatment('Cardiology'))[T.Gastroenterology]",HR,0.7861100957239698,0.677487912047397,0.9121477617683544,0.0015143110680210326,3587.0,0.9,1.0,
+calibrated,Q4,Referral completion Cox PH,"C(specialty, Treatment('Cardiology'))[T.Imaging]",HR,1.1905255008708389,1.0339567564133008,1.370802946479522,0.01534489613900118,3587.0,1.3,1.0,
+calibrated,Q4,Referral completion Cox PH,"C(specialty, Treatment('Cardiology'))[T.Orthopedics]",HR,0.8788277786690942,0.756429689764701,1.0210311348311856,0.09141610606999817,3587.0,1.0,1.0,
+calibrated,Q4,Referral completion Cox PH,prior_auth_required,HR,0.4541208145336797,0.4068373646504739,0.5068996412605989,5.669145705285406e-45,3587.0,0.5,1.0,
+calibrated,Q4,Referral completion Cox PH,urgent,HR,1.3098216568154453,1.1765719656640474,1.4581622057384895,8.200560894377154e-07,3587.0,1.5,0.0,
+calibrated,Q4,Referral completion Cox PH,medicaid,HR,1.1659468352487858,1.0421317422065004,1.3044723306751416,0.00735250824819088,3587.0,1.0,0.0,
+calibrated,Q5,Message response (median hours),weekend_extra_hours,hours,48.07312458466889,,,,,48.0,,
+calibrated,Q5,Message response (median hours),pac_extra_hours,hours,72.13570409011388,,,,,72.0,,
+calibrated,Q5,Message volume,share_from_top20pct_patients,share,0.6776055805642418,,,,,,,
+calibrated,Q7,ED/UC/inpatient 90d: unadjusted,missed_visit,OR,1.5007836879360936,1.2935867678204085,1.741167839688169,8.512519607321575e-08,25351.0,1.5,1.0,expected to be biased upward: comorbidity confounds
+calibrated,Q7,ED/UC/inpatient 90d: adjusted,missed_visit,OR,1.3671609772034814,1.1745421075226925,1.5913683516466572,5.4289008038355295e-05,25351.0,1.5,1.0,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q7,ED/UC/inpatient 90d: adjusted,recent_missed_90d,OR,1.229254935587355,0.9951704551437548,1.5184008818344543,0.0554864951728329,25351.0,,,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q7,ED/UC/inpatient 90d: adjusted,comorbidity_count,OR,1.4021768478407584,1.346156736777217,1.4605282274392586,2.2609973852742804e-59,25351.0,1.4,1.0,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q7,ED/UC/inpatient 90d: adjusted,no_mychart,OR,0.9778277637807407,0.8628423010787625,1.1081366020477066,0.725377684791146,25351.0,1.0,1.0,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q7,ED/UC/inpatient after incomplete referral,incomplete_referral,OR,1.1478496433823597,0.8824173249666075,1.4931243602485587,0.3040999127675301,3230.0,1.3,1.0,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q7,ED/UC/inpatient after incomplete referral,comorbidity_count,OR,1.4878476080425007,1.3595549372081814,1.6282464534339154,5.811160324132554e-18,3230.0,1.4,1.0,"approximate: planted as a rate ratio, estimated as an odds ratio"
+calibrated,Q8,Care-gap risk logistic,age65,OR,1.2914313086493203,1.0671319997355002,1.5628758442002266,0.00860176773482357,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,medicaid,OR,1.0511742108705384,0.8381603646757092,1.3183243543457461,0.6657748688025544,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,no_mychart,OR,1.059927923549809,0.8806862017759474,1.2756498294796974,0.5380558379179348,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,interpreter_needed,OR,0.9222770215185205,0.7170022888775003,1.1863210447385304,0.5287802739131419,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,comorbidity_count,OR,1.0303915399317036,0.959705047071933,1.1062844035280448,0.4089892448855523,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,sdoh_transportation,OR,1.3207684000981619,1.0517023041848756,1.6586720022923997,0.016680314427362272,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,sdoh_financial_strain,OR,0.9081185187328764,0.7438091723052142,1.1087242195599,0.34391973211007376,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,sdoh_housing_instability,OR,1.1698688895873917,0.8468794611563947,1.616042520331824,0.3412198884717511,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,sdoh_social_isolation,OR,2.0064356421815344,1.6436729612787502,2.4492609424471117,7.71055185304374e-12,3178.0,,,
+calibrated,Q8,Care-gap risk logistic,sdoh_low_health_literacy,OR,2.150512390193609,1.7266428811178784,2.678436630383037,8.125682118339327e-12,3178.0,,,
+calibrated,Q8,Care-gap risk,test_auroc_logistic,AUROC,0.6027747469588633,,,,,,,
+calibrated,Q8,Care-gap risk,test_auroc_random_forest,AUROC,0.6152875150896091,,,,,,,
+calibrated,Q8,Care-gap risk,median_missed_care_rate,share,0.2857142857142857,,,,,,,

@@ -658,7 +658,30 @@ def evaluate_model(result, model_df):
 # 8. MAIN PIPELINE
 # ============================================================
 
+def parse_args():
+    import argparse
+    parser = argparse.ArgumentParser(description="Q1 no-show logistic regression")
+    parser.add_argument("--data-dir", default=str(DATA_DIR),
+                        help="Folder with patients.csv and appointments.csv "
+                             "(default: data/processed; e.g. data/scenario/calibrated)")
+    parser.add_argument("--output-dir", default=None,
+                        help="Folder for tables/ and figures/ (default: results/)")
+    return parser.parse_args()
+
+
 def main():
+    global DATA_DIR, TABLE_DIR, FIGURE_DIR
+    args = parse_args()
+    DATA_DIR = Path(args.data_dir)
+    if not DATA_DIR.is_absolute():
+        DATA_DIR = PROJECT_ROOT / DATA_DIR
+    if args.output_dir:
+        out = Path(args.output_dir)
+        out = out if out.is_absolute() else PROJECT_ROOT / out
+        TABLE_DIR, FIGURE_DIR = out / "tables", out / "figures"
+        TABLE_DIR.mkdir(parents=True, exist_ok=True)
+        FIGURE_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Data: {DATA_DIR}")
 
     print("=" * 60)
     print("NYU LANGONE CAPSTONE")

@@ -1,0 +1,16 @@
+scenario,question,drop_off,term,estimate,planted
+calibrated,Q6,D2,ED/UC visits with no PCP visit in prior 12 months,0.27037037037037037,
+calibrated,Q6,D7,New patients seen within 10 days,0.419205298013245,
+calibrated,Q6,D7,Median days booking to visit (not booked at checkout),18.0,
+calibrated,Q6,D9,No-show rate (vs completed),0.06717857694088594,
+calibrated,Q6,D9,Late cancel rate,0.030707390201311323,
+calibrated,Q6,D9,Rebooked within 60 days after a missed visit,0.5809951365506921,
+calibrated,Q6,D10,Completed visits with return interval documented,0.4481902792140641,0.45
+calibrated,Q6,D11,Documented follow-ups booked on the visit day,0.49524688509460085,0.5
+calibrated,Q6,D12,Median days referral to completed visit,20.0,
+calibrated,Q6,D12,Referrals needing prior auth,0.29523278505715084,
+calibrated,Q6,D13,Referrals with no completed visit,0.41427376637858937,
+calibrated,Q6,D14,PCP visit within 7 days after ED/UC/inpatient,0.018333333333333333,
+calibrated,Q6,D14,PCP visit within 14 days after ED/UC/inpatient,0.0362962962962963,
+calibrated,Q6,D14,PCP visit within 30 days after ED/UC/inpatient,0.08185185185185186,
+calibrated,Q9,,Patients with any 12-month gap in PCP appointments,0.7576,
