@@ -1,0 +1,9 @@
+exposure,group,window,n,share_with_ed_uc_inpatient
+PCP visit,Attended visit,30 days,23739,0.019756518808711404
+PCP visit,Missed visit,30 days,2619,0.026345933562428408
+PCP visit,Attended visit,90 days,22844,0.056294869549991244
+PCP visit,Missed visit,90 days,2507,0.08216992421220583
+PCP visit,Attended visit,180 days,21431,0.1097475619429798
+PCP visit,Missed visit,180 days,2364,0.13324873096446702
+Referral,Referral completed by day 60,days 60-150,1688,0.06990521327014218
+Referral,Referral not completed by day 60,days 60-150,1542,0.08106355382619974
