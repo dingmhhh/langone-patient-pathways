@@ -1,0 +1,7 @@
+metric,value
+Share of panel patients with no PCP visit in 12 months and nothing scheduled (as of 2026-09-30),0.18316008316008317
+Average of yearly snapshots (12 months),0.16492693261225005
+Share with no PCP visit in 24 months and nothing scheduled (as of 2026-09-30),0.029301608283762944
+ED/UC/inpatient visits per patient-year during gaps,0.35965419180881686
+ED/UC/inpatient visits per patient-year while in PCP care,0.23517688984024201
+Rate ratio (gap vs in care),1.5292922363805963

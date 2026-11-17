@@ -1,0 +1,20 @@
+drop_off,name,phase,metric,value,denominator_n,driver,note
+D1,Waits it out,1 Need arises,Days from preventive care due date to next PCP visit,,0,Patient,Not in synthetic data; needs Epic field
+D2,Goes to urgent care or ED first,1 Need arises,Share of ED/UC/inpatient visits with no PCP visit in prior 12 months,0.27037037037037037,5400,Patient,
+D3,No MyChart or no PCP listed,2 Getting in,MyChart status at booking,,0,System,Not in synthetic data; needs Epic field
+D4,Not bookable online,2 Getting in,Share of slots open to online booking,,0,System,Not in synthetic data; needs Epic field
+D5,Cannot get through by phone,2 Getting in,PAC hold time / abandoned calls,,0,System,Not in Epic (phone system)
+D6,PAC message takes days,2 Getting in,Days from PAC message to practice action,,0,System,Not in synthetic data; needs Epic field
+D7,No slot in the needed window,2 Getting in,Median days from booking to visit,18.0,24718,System,
+D7,No slot in the needed window,2 Getting in,Share of new patients seen within 10 days,0.419205298013245,1510,System,Lisa's September figure: 43%
+D8,Reminder not received,3 Before visit,Share of visits with a reminder sent,,0,System,Not in synthetic data; needs Epic field
+D9,No-show or late cancel,3 Before visit,No-show + late cancel rate,0.09956048867699642,26848,Patient,
+D9,No-show or late cancel,3 Before visit,Share rebooked within 60 days after a missed visit,0.5809951365506921,2673,Patient,
+D10,Return interval not documented,4 The visit,Share of completed visits with return interval documented,0.4481902792140641,24175,System,"Documentation gap, not a patient loss: blank = not needed OR not entered. Dr. Rein: under half"
+D11,Follow-up not booked before leaving,4 The visit,Share of documented follow-ups booked on the visit day,0.49524688509460085,10835,Both,
+D12,Referral stalls,5 After visit,Median days referral to completed specialist visit,20.0,2101,System,
+D12,Referral stalls,5 After visit,Share of referrals needing prior auth,0.29523278505715084,3587,System,
+D13,Specialist visit missed or outside NYU,5 After visit,Share of referrals not completed within 90 days,0.43332343332343337,3367,Both,
+D14,No PCP follow-up after urgent care or ED,Downstream,Share with a PCP visit within 7 days after ED/UC/inpatient,0.018602029312288614,5322,Both,"Synthetic data has no 'return after ED' mechanism, so this value is a placeholder"
+D14,No PCP follow-up after urgent care or ED,Downstream,Share with a PCP visit within 14 days after ED/UC/inpatient,0.03664036076662908,5322,Both,"Synthetic data has no 'return after ED' mechanism, so this value is a placeholder"
+D14,No PCP follow-up after urgent care or ED,Downstream,Share with a PCP visit within 30 days after ED/UC/inpatient,0.08286358511837655,5322,Both,"Synthetic data has no 'return after ED' mechanism, so this value is a placeholder"

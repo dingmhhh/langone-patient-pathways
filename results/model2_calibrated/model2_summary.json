@@ -1,0 +1,28 @@
+{
+  "data_dir": "data/scenario/calibrated",
+  "data_type": "calibrated synthetic",
+  "questions": {
+    "Q6": "drop-off metrics D1-D14, new vs established, patient vs system",
+    "Q3": "wait time Gamma GLM (log link), patient-clustered SE",
+    "Q9": "no completed PCP visit in 12 (24) months and nothing scheduled, at yearly snapshots"
+  },
+  "wait_time_model": {
+    "n": 22350,
+    "patients": 4931,
+    "excluded": "follow-ups booked at checkout (planned, not access waits); bookings in last 180 days"
+  },
+  "headline": {
+    "no_show_plus_late_cancel_rate": 0.09956048867699642,
+    "new_patients_seen_within_10_days": 0.419205298013245,
+    "share_with_12_month_gap_latest_snapshot": 0.18316008316008317,
+    "ed_rate_ratio_gap_vs_in_care": 1.5292922363805963
+  },
+  "notes": [
+    "Descriptive metrics and associations, not causal effects or NYU Langone findings.",
+    "D1, D3-D6, D8 need Epic fields that the synthetic data does not have.",
+    "D14 is a placeholder: the synthetic data has no 'return to PCP after ED' mechanism.",
+    "D10 is a documentation gap, not a drop-off: a blank return interval can mean no follow-up needed or not entered.",
+    "Synthetic data simplification: every completed visit has a true next visit; 'no follow-up needed' is not simulated.",
+    "Shares in the drop-off chart use different denominators; see denominator_n in the CSV."
+  ]
+}

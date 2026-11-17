@@ -1,0 +1,3 @@
+patient_type,patients,D7 median days booking to visit,D9 no-show + late cancel rate,D10 return interval documented,D11 follow-up booked same day (if documented)
+Established,3739,19.0,0.0998244531954263,0.45085120961366154,0.4949731119943886
+New,1261,16.0,0.09859643042800208,0.43848519800076896,0.49627356422621655

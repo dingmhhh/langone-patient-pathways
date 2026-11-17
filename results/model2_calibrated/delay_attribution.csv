@@ -1,0 +1,5 @@
+step,driver,detail,n,share_within_step
+Appointments not attended,Patient-driven,"No-show, late cancel, patient cancel",4965,0.8039183937823834
+Appointments not attended,System-driven,Clinic canceled,1211,0.19608160621761658
+Referrals closed without a visit,Patient-driven,"Care elsewhere, Issue resolved, No longer needed",1069,0.7517580872011251
+Referrals closed without a visit,System-driven,"Insurance, No appointment available",353,0.24824191279887484

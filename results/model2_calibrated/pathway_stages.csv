@@ -1,0 +1,11 @@
+phase,step,n,denominator,share,note
+Before the visit,Appointment booked,21717,21717,1.0,
+Before the visit,Not canceled by clinic,20858,21717,0.9604457337569646,system-driven loss
+Before the visit,Patient attended,17358,21717,0.799281668738776,D9: no-show / cancel
+End of visit (B5),Follow-up interval recorded,7817,17358,0.4503399009102431,
+End of visit (B5),Referral or test only,3053,17358,0.1758843184698698,
+End of visit (B5),No next step recorded,6488,17358,0.3737757806198871,not needed (loop closed) OR not documented (D10); not a drop-off
+Follow-up lane,Booked before leaving,3831,7817,0.49008571063067674,D11 if not
+Follow-up lane,Completed on time: booked before leaving,3160,3831,0.8248499086400418,
+Follow-up lane,Completed on time: booked later,1721,3986,0.4317611640742599,
+Follow-up lane,Completed on time: all recorded follow-ups,4881,7817,0.6244083407957016,
