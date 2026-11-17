@@ -1,0 +1,30 @@
+NYU Langone Capstone
+Q1: No-show Logistic Regression
+SYNTHETIC DATA - TESTING ONLY
+
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:             is_no_show   No. Observations:                 9868
+Model:                            GLM   Df Residuals:                     9857
+Model Family:                Binomial   Df Model:                           10
+Link Function:                  Logit   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -2867.8
+Date:                Tue, 17 Nov 2026   Deviance:                       5735.7
+Time:                        14:18:45   Pearson chi2:                 9.87e+03
+No. Iterations:                     5   Pseudo R-squ. (CS):          0.0009734
+Covariance Type:              cluster                                         
+========================================================================================================================================
+                                                                           coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                               -2.3321      0.158    -14.757      0.000      -2.642      -2.022
+C(insurance_type, Treatment(reference="Commercial"))[T.Medicaid]         0.0923      0.103      0.894      0.371      -0.110       0.295
+C(insurance_type, Treatment(reference="Commercial"))[T.Medicare]         0.0442      0.103      0.429      0.668      -0.158       0.246
+C(insurance_type, Treatment(reference="Commercial"))[T.Other]            0.0343      0.105      0.325      0.745      -0.172       0.241
+C(visit_type, Treatment(reference="Annual Physical"))[T.Follow-up]       0.0138      0.091      0.151      0.880      -0.165       0.192
+C(visit_type, Treatment(reference="Annual Physical"))[T.New Patient]     0.1193      0.090      1.323      0.186      -0.057       0.296
+C(visit_mode, Treatment(reference="Office"))[T.Phone]                    0.0064      0.167      0.038      0.969      -0.322       0.335
+C(visit_mode, Treatment(reference="Office"))[T.Video]                    0.0170      0.101      0.168      0.866      -0.180       0.214
+age_10                                                                  -0.0111      0.018     -0.634      0.526      -0.046       0.023
+lead_time_30                                                            -0.0710      0.031     -2.262      0.024      -0.132      -0.009
+mychart_active                                                           0.0856      0.087      0.987      0.324      -0.084       0.255
+========================================================================================================================================
