@@ -24,7 +24,7 @@ archive/                     Earlier mock data, scripts and checks (kept for ref
 
 | Model | Questions | Method | Run | Output |
 | --- | --- | --- | --- | --- |
-| Model 1: Appointment attendance | Q1 | Logistic regression (no-show, cancellation), held-out AUROC | `python src/models/model1.py` | `results/model1_calibrated/` |
+| Model 1: Appointment attendance | Q1 | Logistic regression for no-show and cancellation; adjusted probabilities by lead time, visit type, and MyChart × age 65+; held-out AUROC | `python src/models/model1.py` | `results/model1_calibrated/` |
 | Model 2: Patient pathway and access | Q3, Q6, Q9 | Drop-off metrics D1–D14, Gamma regression on wait time, 12-month care gaps | `python src/models/model2.py` | `results/model2_calibrated/` |
 | Model 3: Follow-up and referrals | Q2, Q4 | Logistic regression, Kaplan–Meier, Cox regression | in progress | |
 | Model 4: Downstream utilization | Q7 | Logistic regression on ED / urgent care / hospital use within 30, 90, 180 days | `python src/models/model4.py` | `results/model4_calibrated/` |
