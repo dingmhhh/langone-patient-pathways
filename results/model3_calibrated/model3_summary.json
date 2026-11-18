@@ -1,0 +1,35 @@
+{
+  "data_type": "calibrated synthetic, not patient findings",
+  "data_dir": "data/scenario/calibrated",
+  "observation_end": "2026-09-30",
+  "modules": {
+    "followup": {
+      "status": "ok",
+      "episodes": 10835,
+      "mature_episodes": 8959
+    },
+    "preventive": {
+      "status": "ok",
+      "due_records": 37518
+    },
+    "orders": {
+      "status": "ok",
+      "order_records": 4566
+    },
+    "referrals": {
+      "status": "ok",
+      "referral_episodes": 3587,
+      "mature_90day": 3367,
+      "completed_events": 2101,
+      "other_terminal_closures": 1422
+    }
+  },
+  "interpretation_notes": [
+    "Adjusted comparisons are statistical standardizations, not intervention effects.",
+    "Follow-up analysis uses documented recommended return intervals only.",
+    "Preventive and order status fields require clinical definition review.",
+    "Referral Figure 4 uses cumulative incidence with recorded terminal closures as competing events.",
+    "Referral day-90 regression includes only episodes with >=90 calendar days observation.",
+    "Care outside the system is not observable in these synthetic extracts."
+  ]
+}

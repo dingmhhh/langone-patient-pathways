@@ -1,0 +1,26 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:              completed   No. Observations:                 2911
+Model:                            GLM   Df Residuals:                     2900
+Model Family:                Binomial   Df Model:                           10
+Link Function:                  Logit   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -1778.1
+Date:                Tue, 17 Nov 2026   Deviance:                       3556.2
+Time:                        20:32:24   Pearson chi2:                 2.91e+03
+No. Iterations:                     4   Pseudo R-squ. (CS):           0.007930
+Covariance Type:              cluster                                         
+=================================================================================================
+                                    coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------
+Intercept                         1.0151      0.157      6.476      0.000       0.708       1.322
+C(order_type)[T.CT/MRI]           0.0211      0.168      0.126      0.900      -0.307       0.350
+C(order_type)[T.Lab panel]       -0.0147      0.124     -0.119      0.905      -0.257       0.228
+C(order_type)[T.Mammogram]       -0.1866      0.127     -1.466      0.143      -0.436       0.063
+C(insurance_type)[T.Medicaid]     0.0197      0.114      0.172      0.863      -0.204       0.244
+C(insurance_type)[T.Medicare]    -0.0332      0.111     -0.298      0.766      -0.252       0.185
+C(insurance_type)[T.Other]        0.1297      0.155      0.838      0.402      -0.174       0.433
+prior_auth_required              -0.4826      0.138     -3.509      0.000      -0.752      -0.213
+sdoh_low_health_literacy         -0.1339      0.115     -1.162      0.245      -0.360       0.092
+age                              -0.0001      0.003     -0.052      0.958      -0.005       0.005
+comorbidity_count                -0.0181      0.037     -0.487      0.626      -0.091       0.055
+=================================================================================================

@@ -1,0 +1,26 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:                on_time   No. Observations:                 5667
+Model:                            GLM   Df Residuals:                     5656
+Model Family:                Binomial   Df Model:                           10
+Link Function:                  Logit   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -3231.0
+Date:                Tue, 17 Nov 2026   Deviance:                       6462.1
+Time:                        20:32:24   Pearson chi2:                 5.67e+03
+No. Iterations:                     4   Pseudo R-squ. (CS):             0.1639
+Covariance Type:              cluster                                         
+=================================================================================================
+                                    coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------
+Intercept                         0.0870      0.122      0.715      0.475      -0.152       0.326
+C(insurance_type)[T.Medicaid]    -0.2481      0.090     -2.766      0.006      -0.424      -0.072
+C(insurance_type)[T.Medicare]     0.0304      0.093      0.327      0.744      -0.152       0.213
+C(insurance_type)[T.Other]        0.0776      0.113      0.685      0.493      -0.144       0.300
+same_day                          1.8376      0.065     28.143      0.000       1.710       1.966
+age                              -0.0029      0.002     -1.403      0.160      -0.007       0.001
+mychart_active                    0.0509      0.070      0.723      0.470      -0.087       0.189
+asymptomatic_chronic             -0.3046      0.067     -4.529      0.000      -0.436      -0.173
+sdoh_social_isolation            -0.0336      0.085     -0.397      0.691      -0.200       0.132
+sdoh_low_health_literacy         -0.2359      0.091     -2.590      0.010      -0.414      -0.057
+comorbidity_count                -0.0388      0.030     -1.274      0.203      -0.098       0.021
+=================================================================================================

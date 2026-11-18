@@ -1,0 +1,27 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:        completed_by_90   No. Observations:                 3367
+Model:                            GLM   Df Residuals:                     3355
+Model Family:                Binomial   Df Model:                           11
+Link Function:                  Logit   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -2238.1
+Date:                Tue, 17 Nov 2026   Deviance:                       4476.1
+Time:                        20:32:24   Pearson chi2:                 3.37e+03
+No. Iterations:                     4   Pseudo R-squ. (CS):            0.03830
+Covariance Type:              cluster                                         
+====================================================================================================
+                                       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            0.6548      0.146      4.499      0.000       0.370       0.940
+C(priority)[T.Urgent]                0.1882      0.091      2.072      0.038       0.010       0.366
+C(specialty)[T.Dermatology]         -0.4029      0.120     -3.366      0.001      -0.638      -0.168
+C(specialty)[T.Endocrinology]       -0.3569      0.126     -2.830      0.005      -0.604      -0.110
+C(specialty)[T.Gastroenterology]    -0.1400      0.125     -1.119      0.263      -0.385       0.105
+C(specialty)[T.Imaging]              0.1825      0.118      1.549      0.121      -0.048       0.414
+C(specialty)[T.Orthopedics]         -0.0883      0.127     -0.695      0.487      -0.337       0.161
+C(insurance_type)[T.Medicaid]        0.2758      0.107      2.566      0.010       0.065       0.486
+C(insurance_type)[T.Medicare]        0.0830      0.101      0.820      0.412      -0.115       0.282
+C(insurance_type)[T.Other]          -0.1976      0.148     -1.332      0.183      -0.489       0.093
+prior_auth_required                 -0.8932      0.086    -10.429      0.000      -1.061      -0.725
+age                                 -0.0016      0.002     -0.741      0.459      -0.006       0.003
+====================================================================================================
