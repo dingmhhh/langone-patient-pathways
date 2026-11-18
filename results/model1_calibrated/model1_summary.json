@@ -55,6 +55,58 @@
       "se_method": "Patient-clustered robust standard errors",
       "events_per_parameter": 51.21,
       "caution": null,
+      "mychart_age_interaction": {
+        "status": "ok",
+        "figure": "results/model1_calibrated/no_show_mychart_age_interaction_or.png",
+        "table": "results/model1_calibrated/no_show_mychart_age_interaction_or.csv",
+        "groups": [
+          {
+            "age_group": "Under 65",
+            "comparison": "MyChart Active vs Inactive",
+            "log_odds_ratio": -0.27210847183291126,
+            "std_error": 0.08635194609653021,
+            "odds_ratio": 0.7617716258436052,
+            "ci_lower": 0.6431622291474244,
+            "ci_upper": 0.9022544913895983
+          },
+          {
+            "age_group": "65+",
+            "comparison": "MyChart Active vs Inactive",
+            "log_odds_ratio": -0.6079875399074282,
+            "std_error": 0.07578930477785618,
+            "odds_ratio": 0.5444454420375617,
+            "ci_lower": 0.4692899002610195,
+            "ci_upper": 0.6316369459274672
+          }
+        ]
+      },
+      "adjusted_probability_comparisons": {
+        "status": "ok",
+        "figure": "results/model1_calibrated/no_show_adjusted_probability_comparison.png",
+        "table": "results/model1_calibrated/no_show_adjusted_probabilities.csv"
+      },
+      "sponsor_figures": {
+        "fig2_patient_factors": {
+          "status": "ok",
+          "figure": "results/model1_calibrated/no_show_adjusted_probability_comparison.png",
+          "table": "results/model1_calibrated/no_show_adjusted_probabilities.csv"
+        },
+        "fig3_booking_lead_time": {
+          "status": "ok",
+          "figure": "results/model1_calibrated/fig3_lead_time_adjusted_probability.png",
+          "table": "results/model1_calibrated/fig3_lead_time_adjusted_probability.csv"
+        },
+        "fig4_visit_type": {
+          "status": "ok",
+          "figure": "results/model1_calibrated/fig4_visit_type_adjusted_probability.png",
+          "table": "results/model1_calibrated/fig4_visit_type_adjusted_probability.csv"
+        },
+        "fig5_mychart_age": {
+          "status": "ok",
+          "figure": "results/model1_calibrated/fig5_mychart_age_adjusted_probability.png",
+          "table": "results/model1_calibrated/fig5_mychart_age_adjusted_probability.csv"
+        }
+      },
       "split": "held-out patients",
       "test_patients": 1250,
       "train_n": 19459,
@@ -76,6 +128,14 @@
       "se_method": "Patient-clustered robust standard errors",
       "events_per_parameter": 94.82,
       "caution": null,
+      "sponsor_figures": {
+        "fig6_cancellation": {
+          "status": "ok",
+          "figure": "results/model1_calibrated/fig6_cancellation_risk_and_late_share.png",
+          "table": "results/model1_calibrated/fig6_cancellation_risk_by_lead_time.csv",
+          "late_cancel_share_within_patient_cancellations": 0.2890818858560794
+        }
+      },
       "split": "held-out patients",
       "test_patients": 1250,
       "train_n": 20617,
@@ -86,5 +146,12 @@
       "heldout_average_precision": 0.14775144386677436,
       "heldout_brier_score": 0.10285444668090789
     }
-  }
+  },
+  "sponsor_figure_1": {
+    "status": "ok",
+    "figure": "results/model1_calibrated/fig1_appointment_outcomes.png",
+    "table": "results/model1_calibrated/fig1_appointment_outcomes.csv"
+  },
+  "sponsor_figure_2": "no_show_adjusted_probability_comparison.png (existing figure)",
+  "cancellation_timing_note": "Late-cancel share is computed from appointment status; no cancellation timestamps are available in the README."
 }
