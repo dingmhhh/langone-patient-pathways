@@ -1,7 +1,7 @@
 # Scenario data (synthetic)
 
 Each folder here is one simulated population of 5,000 patients (Oct 2021 to Sep 2026), built by
-`src/generate_scenario_data.py` from the parameters in `config/scenarios.yaml`.
+`archive/generate_scenario_data.py` from the parameters in `config/scenarios.yaml`.
 
 **These are not findings about NYU Langone patients.** The effects were planted on purpose, calibrated
 to our interviews and published benchmarks, so we can check that the models recover them.
@@ -14,7 +14,7 @@ to our interviews and published benchmarks, so we can check that the models reco
 | `system_driven/` | Barriers mostly on the system side (lead time, prior auth, clinic cancellations, PAC delays). |
 
 Only `calibrated/` is stored in GitHub. The other three are rebuilt locally in a few seconds with
-`python src/generate_scenario_data.py` (same seed, identical data).
+`python archive/generate_scenario_data.py` (same seed, identical data).
 
 Each folder holds `patients`, `appointments`, `referrals`, `hospital_visits`, `orders`, `preventive_care`,
 `messages` (CSV) and `scenario_params.json`, the exact values planted in that folder.
@@ -23,14 +23,16 @@ Each folder holds `patients`, `appointments`, `referrals`, `hospital_visits`, `o
 
 ```bash
 # 1. (Re)build the data, all scenarios or one
-python src/generate_scenario_data.py
-python src/generate_scenario_data.py --scenario calibrated
+python archive/generate_scenario_data.py
+python archive/generate_scenario_data.py --scenario calibrated
 
-# 2. Run every model and compare estimates with the planted values
-python src/validate_scenarios.py
+# 2. Run the models (each reads data/scenario/calibrated by default)
+python src/models/model1.py
+python src/models/model2.py
+python src/models/model4.py
 
-# 3. The original Q1 script also runs on any scenario folder
-python src/no_show_regression.py --data-dir data/scenario/calibrated --output-dir results/scenario_calibrated
+# 3. Point a model at another scenario folder
+python src/models/model4.py --data-dir data/scenario/system_driven --output-dir results/model4_system_driven
 ```
 
 To change a scenario, edit `config/scenarios.yaml` and rebuild. Same seed, same data.
